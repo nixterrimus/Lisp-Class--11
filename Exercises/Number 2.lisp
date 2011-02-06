@@ -20,17 +20,19 @@
 
 ; -------------------------------------------------------------------------------------------
 
-; 2. VERY NOT DONE
+; 2. 
+
+; Stable sort ensures that if two elements are equal to each other that they are not moved
+;   during a sort.  This lets us first sort by the second element in the list and then
+;   after knowing that they are in the right order sorting by the first element.  Copy-list
+;   is used to make sure that the sort is non-destructive to the passed list
 
 (defun my-sort (lst)
-    (copy-list lst)
-    ; List length 0
-    ;   Return nil
-    ; Else
-    ;   my-max -> val
-    ;   set-difference
-    ;   join with sorted my-max by y + remainder of list
+        (stable-sort (stable-sort (copy-list lst) #'< :key #'second) #'< :key #'first)
 )
+
+(my-sort '((9 1) (9 4) (0 2) (3 2) (0 4) (9 1) (9 4) (9 2) (9 3)))
+(my-sort ‘((3 3) (2 5) (7 2) (2 5)))
 
 ; -------------------------------------------------------------------------------------------
 
@@ -59,15 +61,14 @@
 
 ; -------------------------------------------------------------------------------------------
 
-; Almost done, reverse should be some sort of sort
 ; 5. Define a function that takes a list and returns a list indicating the number of times
 ;    each (eql) element appears, sorted from most common element to least common.
     
 (defun occurrences (lst)
-    (reverse (mapcar #'cons
+    (sort (mapcar #'list
         (remove-duplicates lst)
         (map 'list #'(lambda (x) (count x lst)) (remove-duplicates lst) )
-    )
+    ) #'> :key #'second)
 )
 
 (occurrences ‘(a b a d a c d c a b b b b b b b))
