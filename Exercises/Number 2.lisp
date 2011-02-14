@@ -1,6 +1,5 @@
 ; Nicholas Rowe
 
-
 ; 1. Define a function that accepts a list of pairs of the form ‘(a n), where n is a number,
 ;    and returns a list of all pairs that contain the maximum value of n’s.
 

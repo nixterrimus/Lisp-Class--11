@@ -12,7 +12,7 @@
           )
    )
 
-
+; -------------------------------------------------------------------------------------------
 
 ; Question Number 2
 ;  The easiest way to represent a table of student information containing a name, a grade,
@@ -52,7 +52,7 @@
 ;  While the coding is a little trickier this wouldn't be too hard if the student information
 ;  was being read in from a file.
 
-
+; -------------------------------------------------------------------------------------------
 
 ; Question Number 3 
 ;   Sums a given list using either a recursive or iterative solution
@@ -70,14 +70,14 @@
        (+ ( if (numberp (car list)) (car list) 0) (sum-list (cdr list)))
      0))
 
-
+; -------------------------------------------------------------------------------------------
 
 ; Question Number 4
 ; Lisp Code for a list ranging from 1 to specified argument: 
   (defun mylist (max) (loop for i from 1 to max collect i))
   
-  
-  
+; -------------------------------------------------------------------------------------------
+
 ; Question Number 5
 ;  Remove lst1 from lst2
   (defun my-remove (lst1 lst2) (reverse (set-difference lst2 lst1)))
