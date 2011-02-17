@@ -61,9 +61,27 @@
         (format t "~%~a~%" (coerce (loop for j from 1 to (* (second (array-dimensions (bingo-card bingo))) 6) collect #\-) 'string)))
 )
 
+(defun bingo-game (&key (size 5))
+    (let ((card1 (make-my-bingo :size size)) (card2 (make-my-bingo :size size)) (input nil))
+        (loop while (not (or (isBingo card1) (isBingo card2))) do            
+            (setf input (random 50))
+            (mark card1 input)
+            (mark card2 input)
+                    
+        )
+        
+        (if (and (isBingo card1) (isBingo card2)) (format t "It's a tie!"))
+        (if (and (isBingo card1) (not (isBingo card2))) (format t "Player 1 is the winner!") (format t "Player 2 is the winner"))
+        
+        (display card1)
+        (display card2)
+    )
+    
+)
+
 ; Plays the bingo game!
 ;   Nothin' tricky.
-(defun bingo-game(&key (size 5))
+(defun bingo-game-as-caller(&key (size 5))
     (let ((card1 (make-my-bingo :size size)) (card2 (make-my-bingo :size size)) (input nil))
         (format t "Let's get ready to bingo!~%")
         (loop while (not (or (isBingo card1) (isBingo card2))) do
@@ -80,8 +98,8 @@
         (if (and (isBingo card1) (isBingo card2)) (format t "It's a tie!"))
         (if (and (isBingo card1) (not (isBingo card2))) (format t "Player 1 is the winner!") (format t "Player 2 is the winner"))
         
-        (display (mark card1))
-        (display (mark card2))) 
+        (display card1)
+        (display card2)
     )
 )
 

@@ -259,3 +259,37 @@ from: http://www.n-a-n-o.com/lisp/cmucl-tutorials/LISP-tutorial-24.html
 
 ; Returns the result rather than printing it
 (format nil "sdfsdf")
+
+; Hash tables
+
+;Keyword test to use change how elements are compared
+(setf *hash* (make-hash-table :test #`equal))
+
+(gethash 'key1 *hash*)
+
+(setf (gethash 'key1 *hash*) 'value1)
+
+(remhash 'key1 *hash*) ; Removes an element from the hash
+
+(maphash #'(lambda(k v) (format t "~a = ~a~%" k v)) *hash*)
+
+(defun hash-to-list (hashtable)
+  "Return a list that represent the HASHTABLE."
+  (let ((mylist nil))
+    (maphash (lambda (kk vv) (setq mylist (cons (list kk vv) mylist))) hashtable)
+    mylist
+  )
+)
+
+
+; Chapter 5 - Control
+
+(progn (print "a") (print "b"))
+
+(block one (format t "a") (return-from name "b"))
+
+(block nil (print "a") (return "a"))
+
+(values 1 2 3 4 5)
+
+(multiple-value-bind (x y) (values 1 2) x y)
