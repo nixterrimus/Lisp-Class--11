@@ -74,8 +74,7 @@
         (if (and (isBingo card1) (not (isBingo card2))) (format t "Player 1 is the winner!") (format t "Player 2 is the winner"))
         
         (display card1)
-        (display card2)
-    )
+        (display card2))
     
 )
 

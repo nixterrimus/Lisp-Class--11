@@ -293,3 +293,9 @@ from: http://www.n-a-n-o.com/lisp/cmucl-tutorials/LISP-tutorial-24.html
 (values 1 2 3 4 5)
 
 (multiple-value-bind (x y) (values 1 2) x y)
+
+
+----
+
+(reduce #'+ lst)
+(apply #')
